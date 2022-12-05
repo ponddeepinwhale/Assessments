@@ -8,12 +8,12 @@ def Shop(Money):
     print("Your Items:", Inventory)
     print("Shop Items:", Stock[0], "for 25 coins")
     print(Stock[1], "for 5 coins")
-    print(Stock[2], "for !00 coins")
+    print(Stock[2], "for 100 coins")
     print(Stock[3], "for 30 coins")
     print("Press t to buy the tiramisu, b to buy the banana, s to buy the mithril sword, and p to buy the health potion")
     choice = input()
-    if Money >=25:
-        if choice == 't' or choice == 'T' and Stock[0] == 'Tiramisu':
+    if choice == 't' or choice == 'T' and Stock[0] == 'Tiramisu':
+        if Money >=25:
             Inventory.append('Tiramisu')
             Money -= 25
             print("You bought the Tiramisu!")
@@ -21,12 +21,13 @@ def Shop(Money):
             Stock[0] = 'empty'
             print(Stock)
             print("You now have", Money, "coins")
-        elif choice == 't' or choice == 'T':
+        elif Money < 25:
+            print("You don't have enough money for that.")
+    elif Stock[0] != 'Tiramisu':
             print("That item is out of stock! Thank you for shopping with us.")
-    else:
-        print("You don't have enough money for that.")
-    if Money >=5:
-        if choice == 'b' or choice == 'B' and Stock[1] == 'banana':
+
+    if choice == 'b' or choice == 'B' and Stock[1] == 'banana':
+        if Money >=5:
             Inventory.append('banana')
             Money -= 5
             print("You bought the banana!")
@@ -34,12 +35,13 @@ def Shop(Money):
             Stock[1] = 'empty'
             print(Stock)
             print("You now have", Money, "coins")
-        elif choice == 'b' or choice == 'B':
+        elif Money < 5:
+            print("You don't have enough money for that.")
+    elif Stock[1] != 'banana':
             print("That item is out of stock! Thank you for shopping with us.")
-    else:
-        print("You don't have enough money for that.")
-    if Money >=100:
-        if choice == 's' or choice == 'S' and Stock[2] == 'sword':
+
+    if choice == 's' or choice == 'S' and Stock[2] == 'sword':
+        if Money >=100:
             Inventory.append('sword')
             Money -= 100
             print("You bought the mithril sword!")
@@ -47,23 +49,24 @@ def Shop(Money):
             Stock[2] = 'empty'
             print(Stock)
             print("You now have", Money, "coins")
-        elif choice == 's' or choice == 'S':
+        elif Money < 100:
+            print("You don't have enough money for that.")
+    elif Stock[2] != 'sword':
             print("That item is out of stock! Thank you for shopping with us.")
-    else:
-        print("You don't have enough money for that.")
+    
     if Money >= 30:
-        if choice == 'p' or choice == 'P' and Stock[3] == 'potion':
-            Inventory.append('potion')
+        if choice == 'p' or choice == 'P' and Stock[3] == 'Potion':
+            Inventory.append('Potion')
             Money -= 30
             print("You bought the health potion!")
             print(Inventory)
             Stock[3] = 'empty'
             print(Stock)
             print("You now have", Money, "coins")
-        elif choice == 'p' or choice == 'P':
+        elif Money < 30:
+            print("You don't have enough money for that.")
+    elif Stock[3] != Potion:
             print("That item is out of stock! Thank you for shopping with us.")
-    else:
-        print("You don't have enough money for that.")
     if Money <5:
         print("You don't have enough money for anything")
         
